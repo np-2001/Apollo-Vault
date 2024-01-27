@@ -47,6 +47,9 @@ function App() {
         
         <NavBar/>
 
+        <button id="Start" type="button">Start</button>
+
+
         
 
       </div>
