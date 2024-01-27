@@ -1,0 +1,15 @@
+version: '1.0'
+services:
+  backend:
+    container_name: "apollo-vault-backend"
+    build:
+      context: ./apollo-vault-backend
+    ports:
+      - "5000:5000"
+
+  frontend:
+    container_name: "apollo-vault-frontend"
+    build:
+      context: ./apollo-vault-frontend
+    ports:
+      - "3000:3000"
