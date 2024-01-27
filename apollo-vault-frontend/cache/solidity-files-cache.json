@@ -1,0 +1,40 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "C:\\Users\\17348\\Desktop\\Neil's Project\\Med-Pali\\Apollo-Vault\\Apollo-Vault\\apollo-vault-frontend\\contracts\\apollo-vault.sol": {
+      "lastModificationDate": 1706389914734,
+      "contentHash": "7c1193183dc71d1782050d770e273a6d",
+      "sourceName": "contracts/apollo-vault.sol",
+      "solcConfig": {
+        "version": "0.8.0",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "ApolloVault"
+      ]
+    }
+  }
+}
