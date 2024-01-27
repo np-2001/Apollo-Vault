@@ -2,9 +2,8 @@
   display: flex;
   flex-direction: column;
   place-items: center;
-  min-width: 100vw;
-  min-height: 100vh;
-  background-color: #18453B
+  width: 100%;
+  height: auto;
 }
 
 
@@ -15,7 +14,9 @@
   text-align: center;
 }
 
-
+body {
+  background-color: #18453B;
+}
 
 .logo {
   height: 6em;
@@ -51,4 +52,9 @@
 
 .read-the-docs {
   color: #888;
+}
+
+#title {
+  color: white;
+  text-shadow: 2px, 2px, 4px, rgba(0, 0, 0, 0.7)
 }

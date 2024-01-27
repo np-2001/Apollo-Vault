@@ -63,10 +63,9 @@ function App() {
   return (
     <>
       <div className='App'>
-        
         <NavBar/>
-
-        <button id="Start" type="button">Start</button>
+        <h1 id='title'>Welcome to the Apollo Vault</h1>
+        <button id="Start" type="button">Click here to start</button>
 
 
         

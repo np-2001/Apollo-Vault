@@ -5,6 +5,8 @@
     overflow: hidden;
     position: fixed;
     top: 0;
+    width: auto;
+    height: auto
   }
   
   /* Change the color of links on hover */
