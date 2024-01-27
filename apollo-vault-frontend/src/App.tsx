@@ -21,13 +21,32 @@ function App() {
   const [wallet, setWallet] = useState(initialState)  /* New */
 
   useEffect(() => {
+    const refreshAccounts = (accounts: any) => {                /* New */
+      if (accounts.length > 0) {                                /* New */
+        updateWallet(accounts)                                  /* New */
+      } else {                                                  /* New */
+        // if length 0, user is disconnected                    /* New */
+        setWallet(initialState)                                 /* New */
+      }                                                         /* New */
+    } 
+    
     const getProvider = async () => {
       const provider = await detectEthereumProvider({ silent: true })
       console.log(provider)
       setHasProvider(Boolean(provider)) // transform provider to true or false
+      if (provider) {                                           /* New */
+        const accounts = await window.ethereum.request(         /* New */
+          { method: 'eth_accounts' }                            /* New */
+        )                                                       /* New */
+        refreshAccounts(accounts)                               /* New */
+        window.ethereum.on('accountsChanged', refreshAccounts)  /* New */
+      }
     }
 
     getProvider()
+    return () => {                                              /* New */
+      window.ethereum?.removeListener('accountsChanged', refreshAccounts)
+    } 
   }, [])
 
   const updateWallet = async (accounts:any) => {     /* New */
