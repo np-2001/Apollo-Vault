@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import detectEthereumProvider from '@metamask/detect-provider'
+import NavBar from './Navbar'
 import './App.css'
-
 let injectedProvider = false
 
 if (typeof window.ethereum !== 'undefined') {
@@ -43,12 +43,21 @@ function App() {
 
   return (
     <>
+      <div className='App'>
+        
+        <NavBar/>
+
+        
+
+      </div>
+    {/*
       <div className="App">
+
         <h2>Injected Provider { injectedProvider ? 'DOES' : 'DOES NOT'} Exist</h2>
-        { hasProvider &&                               /* Updated */
+        { hasProvider &&                               
         <button onClick={handleConnect}>Connect MetaMask</button>
         }
-        { wallet.accounts.length > 0 &&                /* New */
+        { wallet.accounts.length > 0 &&                
           <div>Wallet Accounts: { wallet.accounts[0] }</div>
         }
       </div>
@@ -72,7 +81,15 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+
+      
+      */}
+
+
+
+
     </>
+  
   )
 }
 

@@ -8,6 +8,7 @@ RUN npm install
 
 RUN npm install vite
 
+
 COPY . .
 
 EXPOSE 3000
