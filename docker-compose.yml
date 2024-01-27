@@ -1,15 +1,27 @@
-version: '1.0'
+version: '3.8'
 services:
   backend:
-    container_name: "apollo-vault-backend"
+    container_name: "apollo-vault-backend_c"
     build:
       context: ./apollo-vault-backend
     ports:
       - "5000:5000"
+    stdin_open: true
+    tty: true
 
   frontend:
-    container_name: "apollo-vault-frontend"
+    container_name: "apollo-vault-frontend_c"
     build:
       context: ./apollo-vault-frontend
     ports:
       - "3000:3000"
+    stdin_open: true
+    tty: true
+
+
+
+
+    
+    
+    
+    
