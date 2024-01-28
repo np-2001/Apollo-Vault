@@ -23,15 +23,19 @@ const WebcamCapture: React.FC = () => {
                 .then((res: { data: React.SetStateAction<string>; }) => {
                     console.log(`response = ${JSON.stringify(res.data)}`);
                     setName(res.data);
-                    if (res.data === 'Unknown') {
+                    console.log(res.data)
+                    if (res.data == "Unknown") {
+                        navigate('/NewUserForm');
                         setShowPrompt(true);
+                    } else {
+                        navigate('/HomeMainDisplay');
                     }
-                    navigate('/HomeMainDisplay');
+                    
                 })
                 .catch((error: any) => {
                     console.error('Error:', error);
                     setName('Error occurred');
-                    navigate('/NewUserForm');
+                    
 
                 });
             
