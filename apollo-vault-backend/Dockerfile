@@ -4,7 +4,7 @@ WORKDIR /apollo-vault-backend-docker
 
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
-
+RUN pip install pymongo
 COPY . .
 ENV FLASK_APP=website.py
 

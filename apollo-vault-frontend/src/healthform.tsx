@@ -3,7 +3,8 @@ import { NavLink } from "react-router-dom";
 import { ChangeEvent, FormEvent } from 'react';
 import NavBar from "./Navbar";
 import "./healthform.css"
-
+import { database } from './firebase';
+import { ref, onValue, set } from 'firebase/database';
 
 export default function Health() {
     const [formData, setFormData] = useState({
@@ -23,6 +24,19 @@ export default function Health() {
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
         console.log(formData);
+        const path = 'apollo_data/'
+        const dataRef = ref(database, path);
+        
+
+        set(dataRef, formData)
+        .then(() => {
+            console.log('Data saved successfully!');
+            // Handle successful submission (e.g., clear form, show message)
+        })
+        .catch((error) => {
+            console.error('Error writing data to Firebase', error);
+            // Handle errors here
+        });
         //Conver data into json file and send to blockchain
         // Handle the form submission here
     };
