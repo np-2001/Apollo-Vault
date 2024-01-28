@@ -5,13 +5,12 @@ import './styles.css'
 export function NavBar() {
   return (
     <nav className="navbar-container">
-        <a href="/" className="site-title"> APOLLO-VAULT</a>
         <ul>
+            <li><a href="/" className="site-title"> APOLLO-VAULT</a></li>
             <li> <a href="/Display">Record Display</a></li>
             <li> <a href="/HealthForm">Health Form Submission</a></li>
-            
         </ul>
-
+        <img src="src/assets/logo.webp" id="logo"/>
     </nav>
   );
 }

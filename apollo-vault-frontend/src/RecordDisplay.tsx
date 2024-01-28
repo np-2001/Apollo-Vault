@@ -27,9 +27,6 @@ function RecordDisplay() {
                     <h3>{data.symptoms}</h3>
                 </div>
             </div>
-            {/* <h3 id='smoking'>Smoking: </h3>
-            <h3 id='alcohol'>Alcohol: </h3>
-            <h3 id='dietary'>Dietary Restrictions: </h3> */}
         </>
     )
 }

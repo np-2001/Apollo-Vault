@@ -6,7 +6,10 @@
     position: fixed;
     top: 0;
     width: auto;
-    height: auto
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   
   /* Change the color of links on hover */
@@ -52,4 +55,8 @@
 .navbar-container a.active {
     background-color: #04AA6D;
     color: white;
+}
+#logo {
+    width: 5%;
+    height: auto;
 }
