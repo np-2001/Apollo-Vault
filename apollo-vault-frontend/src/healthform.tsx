@@ -32,7 +32,7 @@ export default function Health() {
         
         const formDataDict = {
             name: formData.name,
-            dob: formData.dob,
+            dob: formData.dateOfBirth,
             insuranceDetails: formData.insurance,
             reportedSymptoms: formData.symptoms,
             // add more fields or transformations as needed
