@@ -31,8 +31,7 @@ const WebcamCapture: React.FC = () => {
                         navigate('/HomeMainDisplay', {state: {name: res.data}});
                         window.sessionStorage.setItem("name", JSON.stringify(res.data))
                     }
-                    window.sessionStorage.setItem("name", JSON.stringify(res.data))
-                    navigate('/HomeMainDisplay', {state: {name: res.data}});
+
                 })
                 .catch((error: any) => {
                     console.error('Error:', error);
