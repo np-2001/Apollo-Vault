@@ -11,7 +11,7 @@ https://support.metamask.io/hc/en-us/articles/360015289452-How-to-add-accounts-i
 Docker: Apollo-Vault is containerized for easy deployment. Download and install Docker from Docker's official website.
 
 # Getting Started
-Clone this repository: git clone https://github.com/your-username/apollo-vault.git
+Clone this repository: git clone https://github.com/np-2001/Apollo-Vault.git
 
 Navigate to the project directory: cd apollo-vault
 
