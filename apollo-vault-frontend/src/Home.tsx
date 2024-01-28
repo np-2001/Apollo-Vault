@@ -4,7 +4,13 @@ import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import detectEthereumProvider from '@metamask/detect-provider'
+import ApolloVault from './abis/apollo-vault.json'
+const ethers = require('ethers');
 let injectedProvider = false
+
+const contractAddress = "0xb8C825e2D81583ddA938Fca7816Ab8F88e7c24c2"
+const signer = await ethers.getSigners();
+const contract = new ethers.Contract(contractAddress, ApolloVault, signer)
 
 function Homepage() {
 
