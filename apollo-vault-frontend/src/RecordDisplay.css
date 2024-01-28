@@ -18,3 +18,9 @@
     display: flex;
     justify-content: space-between;
 }
+
+#data-container {
+    border: 3px solid white;
+    margin-bottom: 4px;
+    padding: 10px
+}

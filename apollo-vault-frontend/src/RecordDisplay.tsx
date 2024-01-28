@@ -50,20 +50,24 @@ function RecordDisplay() {
         <>
             <NavBar/>
             <div id='data'>
+                {data[0] && (
+                    <h1 id='record-name'>{data[0].name}'s medical records</h1>
+                )}
                 {data && data.map((item) => (
                     <>
-                        <h1 id='record-name'>{data[0].name}'s medical records</h1>
-                        <div id='dob-container'>
-                            <h3 id='dob'>Date of Birth: </h3>
-                            <h3>{item.dob}</h3>
-                        </div>
-                        <div id='insurance-container'>
-                            <h3 id='insurance'>Insurance:</h3>
-                            <h3>{item.insurance}</h3>
-                        </div>
-                        <div id='insurance-container'>
-                            <h3 id='symptoms'>Symptoms: </h3>
-                            <h3>{item.symptoms}</h3>
+                        <div id='data-container'>
+                            <div id='dob-container'>
+                                <h3 id='dob'>Date of Birth: </h3>
+                                <h3>{item.dob}</h3>
+                            </div>
+                            <div id='insurance-container'>
+                                <h3 id='insurance'>Insurance:</h3>
+                                <h3>{item.insurance}</h3>
+                            </div>
+                            <div id='insurance-container'>
+                                <h3 id='symptoms'>Symptoms: </h3>
+                                <h3>{item.symptoms}</h3>
+                            </div>
                         </div>
                         </>
                 ))}
