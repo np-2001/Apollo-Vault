@@ -9,6 +9,7 @@ describe("ApolloVault Contract", function () {
 
     const ApolloVault = await ethers.getContractFactory("ApolloVault");
     this.apolloVault = await ApolloVault.deploy();
+    // this.apolloVault = ApolloVault(address)
   });
 
   it("Should register a new user and retrieve the user's address", async function () {
