@@ -1,35 +1,51 @@
-from flask import Flask, request 
+from flask import Flask, request
 from flask_cors import CORS
-from pymongo import MongoClient 
+import json
+import face_rec
+from PIL import Image
+import base64
+import io
+import os
+import shutil
+import time
 
 app = Flask(__name__)
 CORS(app)
-@app.route('/')
+@app.route('/', methods=['POST', 'GET'])
 def home():
-    return "Hey there!"
+    data = request.get_json()
+    resp = 'Unknown'
+    directory = './new_user'
+    if data:
+        if os.path.exists(directory):
+            shutil.rmtree(directory)
 
-@app.route('/recognize', methods=["GET", "POST"])
-def faceReconition():
-    print("Hello")
-    return {"success": 1, "test": "Test"}
+        if  not os.path.exists(directory):
+            try:
+                os.mkdir(directory)
+                time.sleep(1)
+                result = data['data']
+                b = bytes(result, 'utf-8')
+                image = b[b.find(b'/9'):]
+                im = Image.open(io.BytesIO(base64.b64decode(image)))
+                im.save(directory + '/new_user.jpeg')
+                if face_rec.nitin.recognize_faces() == 'Nitin':
+                    resp = 'Nitin'
+                elif face_rec.prajeeth.recognize_faces() == 'Prajeeth':
+                    resp = 'Prajeeth'
+                elif face_rec.tim.recognize_faces() == 'Tim':
+                    resp = 'Tim'
+                elif face_rec.rahul.recognize_faces() == 'Rahul':
+                    resp = 'Rahul'
+                elif face_rec.neil.recognize_faces() == 'Neil':
+                    resp = 'Neil'
+                else:
+                    resp = 'Unknown'
 
+            except:
+                pass
 
-
-
-# client = MongoClient('mongodb+srv://apollo-vault.rvnh3jl.mongodb.net/?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority')
-# db = client['demo'] 
-# collection = db['data'] 
-# @app.route('/add_data', methods=['POST']) 
-# def add_data(): 
-#     # Get data from request 
-#     data = request.json 
-  
-#     # Insert data into MongoDB 
-#     collection.insert_one(data) 
-  
-#     return 'Data added to MongoDB'
-
+    return resp
 
 if __name__ == '__main__':
-    
     app.run(debug=True)

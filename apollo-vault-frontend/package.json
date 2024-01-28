@@ -17,6 +17,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.21.3",
+    "react-webcam": "^7.2.0",
     "require": "^0.4.4",
     "web3": "^4.4.0"
   },
