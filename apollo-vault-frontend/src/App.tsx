@@ -7,6 +7,10 @@ import HealthForm from './healthform'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RecordDisplay from './RecordDisplay'
 import Homepage from './Home'
+import HomeMainDisplay from './Home_Main'
+import About from './UserAbout'
+
+
 let injectedProvider = false
 
 if (typeof window.ethereum !== 'undefined') {
@@ -71,6 +75,8 @@ function App() {
             <Route index element={<Homepage />} />
             <Route path='/Display' element={<RecordDisplay/>}/>
             <Route path='/HealthForm' element={<HealthForm/>}/>
+            <Route path='/HomeMainDisplay' element={<HomeMainDisplay/>}/>
+            <Route path='/About' element={<About/>}/>
           </Routes>
         </BrowserRouter>
 

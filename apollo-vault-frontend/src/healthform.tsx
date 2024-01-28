@@ -24,7 +24,7 @@ export default function Health() {
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
         console.log(formData);
-        const path = 'apollo_data/'
+        const path = 'apollo_dat/'
         const dataRef = ref(database, path);
         
         const formDataDict = {
