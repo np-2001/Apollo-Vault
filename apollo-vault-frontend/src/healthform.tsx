@@ -9,7 +9,7 @@ import { ref, onValue, push } from 'firebase/database';
 export default function Health() {
     const [formData, setFormData] = useState({
         name: "",
-        dob: "",
+        dateOfBirth: "",
         insurance: "",
         symptoms: "",
     });
@@ -73,7 +73,7 @@ export default function Health() {
                         type="date"
                         id="dateOfBirth"
                         name="dateOfBirth"
-                        value={formData.dob}
+                        value={formData.dateOfBirth}
                         onChange={handleChange}
                     />
                 </div>
