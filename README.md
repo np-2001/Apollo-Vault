@@ -17,4 +17,4 @@ Navigate to the project directory: cd apollo-vault
 
 Build the Docker container: docker-compose up
 
-CHoose the Docker container: 3000:3000 
+Choose the Docker container: 3000:3000 
