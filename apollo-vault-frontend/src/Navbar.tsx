@@ -13,6 +13,7 @@ export function NavBar() {
             </li>
             <li> <a href="/Team"> Meet the Team</a> </li>
             <li> <a href="/Display">Record Display</a></li>
+            <li> <a href="/HealthForm">Record Display</a></li>
             
         </ul>
 

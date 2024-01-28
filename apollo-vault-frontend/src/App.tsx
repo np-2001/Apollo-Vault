@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import detectEthereumProvider from '@metamask/detect-provider'
 import NavBar from './Navbar'
-
+import HealthForm from './healthform'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RecordDisplay from './RecordDisplay'
 import Homepage from './Home'
@@ -70,6 +70,7 @@ function App() {
           <Routes>
             <Route index element={<Homepage />} />
             <Route path='/Display' element={<RecordDisplay/>}/>
+            <Route path='/HealthForm' element={<HealthForm/>}/>
           </Routes>
         </BrowserRouter>
 
