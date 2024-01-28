@@ -7,7 +7,7 @@ import RecordDisplay from './RecordDisplay'
 import Homepage from './Home'
 import HomeMainDisplay from './Home_Main'
 import About from './UserAbout'
-
+import NewUserForm from './NewUserForm'
 
 let injectedProvider = false
 
@@ -75,6 +75,7 @@ function App() {
             <Route path='/HealthForm' element={<HealthForm/>}/>
             <Route path='/HomeMainDisplay' element={<HomeMainDisplay/>}/>
             <Route path='/About' element={<About/>}/>
+            <Route path='/NewUserForm' element={<NewUserForm/>}/>
           </Routes>
         </BrowserRouter>
 

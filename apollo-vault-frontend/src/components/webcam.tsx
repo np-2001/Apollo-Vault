@@ -1,8 +1,10 @@
 import React, { useState, useCallback, useRef } from 'react';
 import axios from 'axios';
 import Webcam, { WebcamProps } from 'react-webcam';
+import { useNavigate } from 'react-router-dom';
 
 const WebcamCapture: React.FC = () => {
+    const navigate = useNavigate();
     const webcamRef = useRef<Webcam>(null);
     const videoConstraints: MediaTrackConstraints = {
         width: 200,
@@ -24,11 +26,16 @@ const WebcamCapture: React.FC = () => {
                     if (res.data === 'Unknown') {
                         setShowPrompt(true);
                     }
+                    navigate('/HomeMainDisplay');
                 })
                 .catch((error: any) => {
                     console.error('Error:', error);
                     setName('Error occurred');
+                    navigate('/NewUserForm');
+
                 });
+            
+
         }
     }, [webcamRef]);
 
@@ -51,9 +58,10 @@ const WebcamCapture: React.FC = () => {
                 width={350}
                 videoConstraints={videoConstraints}
             />
-            <button onClick={capture}>Click me!</button>
+            <button onClick={capture}>Click me to Start</button>
             <h2>{name}</h2>
             {showPrompt && (
+
                 <div>
                     <label htmlFor="nameInput">Enter your name:</label>
                     <input type="text" id="nameInput" value={new_user} onChange={handleInputChange} />

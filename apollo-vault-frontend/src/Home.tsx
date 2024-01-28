@@ -88,7 +88,6 @@ function Homepage() {
             <NavBar/>
             <h1 id='title'>Welcome to the Apollo Vault</h1>
             <WebcamCapture />
-            <button id="Start" type="button">Click here to start</button>
 
             { hasProvider &&                               
             <button onClick={handleConnect}>Connect MetaMask</button>

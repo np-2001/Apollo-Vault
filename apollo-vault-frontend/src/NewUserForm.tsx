@@ -5,13 +5,16 @@ import NavBar from './Home_Main_Nav';
 import "./healthform.css"
 import { database } from './firebase';
 import { ref, onValue, push } from 'firebase/database';
+import { useNavigate } from 'react-router-dom';
 
-export default function Health() {
+export default function NewUser() {
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         name: "",
         dateOfBirth: "",
-        insurance: "",
-        symptoms: "",
+        Gender: "",
+        Ethnicity: "",
     });
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -24,20 +27,21 @@ export default function Health() {
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
         console.log(formData);
-        const path = 'apollo_data/'
+        const path = '/about/hash'
         const dataRef = ref(database, path);
         
         const formDataDict = {
             name: formData.name,
             dob: formData.dateOfBirth,
-            insuranceDetails: formData.insurance,
-            reportedSymptoms: formData.symptoms,
+            Gender: formData.Gender,
+            Ethnicity: formData.Ethnicity,
             // add more fields or transformations as needed
         };
 
         push(dataRef, formDataDict)
         .then(() => {
             console.log('Data saved successfully!');
+            navigate('/HomeMainDisplay');
             // Handle successful submission (e.g., clear form, show message)
         })
         .catch((error) => {
@@ -50,8 +54,7 @@ export default function Health() {
 
     return (
         <div id="wrapper"> {/* Wrapper div */}
-            <NavBar/>
-            <h1 id="title">Health Record Form</h1>
+            <h1 id="title">New User Form</h1>
             <form id="survey-form" onSubmit={handleSubmit}>
                 <div className="form-control">
                     <label htmlFor="name">Name: </label>
@@ -76,22 +79,22 @@ export default function Health() {
                 </div>
 
                 <div className="form-control">
-                    <label htmlFor="insurance">Insurance: </label>
+                    <label htmlFor="insurance">Gender: </label>
                     <input
                         type="text"
-                        id="insurance"
-                        name="insurance"
-                        value={formData.insurance}
+                        id="Gender"
+                        name="Gender"
+                        value={formData.Gender}
                         onChange={handleChange}
                     />
                 </div>
 
                 <div className="form-control">
-                    <label htmlFor="symptoms">Symptoms: </label>
+                    <label htmlFor="symptoms">Ethnicity: </label>
                     <textarea
-                        id="symptoms"
-                        name="symptoms"
-                        value={formData.symptoms}
+                        id="Ethnicity"
+                        name="Ethnicity"
+                        value={formData.Ethnicity}
                         onChange={handleChange}
                     />
                 </div>
