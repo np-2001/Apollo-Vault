@@ -4,7 +4,7 @@ import { ChangeEvent, FormEvent } from 'react';
 import NavBar from "./Navbar";
 import "./healthform.css"
 import { database } from './firebase';
-import { ref, onValue, set } from 'firebase/database';
+import { ref, onValue, push } from 'firebase/database';
 
 export default function Health() {
     const [formData, setFormData] = useState({
@@ -27,8 +27,15 @@ export default function Health() {
         const path = 'apollo_data/'
         const dataRef = ref(database, path);
         
+        const formDataDict = {
+            name: formData.name,
+            dob: formData.dateOfBirth,
+            insuranceDetails: formData.insurance,
+            reportedSymptoms: formData.symptoms,
+            // add more fields or transformations as needed
+        };
 
-        set(dataRef, formData)
+        push(dataRef, formDataDict)
         .then(() => {
             console.log('Data saved successfully!');
             // Handle successful submission (e.g., clear form, show message)
