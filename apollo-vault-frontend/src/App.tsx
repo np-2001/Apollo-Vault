@@ -47,10 +47,11 @@ function App() {
     const getProvider = async () => {
       const provider = await detectEthereumProvider({ silent: true });
       console.log(provider);
-      setHasProvider(Boolean(provider)); // transform provider to true or false
+      setHasProvider(Boolean(provider));
     };
+    
+    getProvider(); 
 
-    getProvider();
   }, []);
 
   const updateWallet = async (accounts: any) => {
@@ -66,40 +67,39 @@ function App() {
 
   return (
     <>
-    <div>
+      <div>
         <div className='head'>
-          <h2>live Face Recognition</h2>
+          <h2>Live Face Recognition</h2>
         </div>
         <WebcamCapture />
+        <div className='App'>
+          <h2>Injected Provider {injectedProvider ? 'DOES' : 'DOES NOT'} Exist</h2>
+          {hasProvider && (
+            <button onClick={handleConnect}>Connect MetaMask</button>
+          )}
+          {wallet.accounts.length > 0 && (
+            <div>Wallet Accounts: {wallet.accounts[0]}</div>
+          )}
+        </div>
+        <div>
+          <a href='https://vitejs.dev' target='_blank' rel='noreferrer'>
+            <img src={viteLogo} className='logo' alt='Vite logo' />
+          </a>
+          <a href='https://react.dev' target='_blank' rel='noreferrer'>
+            <img src={reactLogo} className='logo react' alt='React logo' />
+          </a>
+        </div>
+        <h1>Vite + React</h1>
+        <div className='card'>
+          <button onClick={() => setCount(count + 1)}>
+            count is {count}
+          </button>
+          <p>Edit <code>src/App.tsx</code> and save to test HMR</p>
+        </div>
+        <p className='read-the-docs'>
+          Click on the Vite and React logos to learn more
+        </p>
       </div>
-      <div className='App'>
-        <h2>Injected Provider {injectedProvider ? 'DOES' : 'DOES NOT'} Exist</h2>
-        {hasProvider && (
-          <button onClick={handleConnect}>Connect MetaMask</button>
-        )}
-        {wallet.accounts.length > 0 && (
-          <div>Wallet Accounts: {wallet.accounts[0]}</div>
-        )}
-      </div>
-      <div>
-        <a href='https://vitejs.dev' target='_blank' rel='noreferrer'>
-          <img src={viteLogo} className='logo' alt='Vite logo' />
-        </a>
-        <a href='https://react.dev' target='_blank' rel='noreferrer'>
-          <img src={reactLogo} className='logo react' alt='React logo' />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className='card'>
-        <button onClick={() => setCount(count + 1)}>
-          count is {count}
-        </button>
-        <p>Edit <code>src/App.tsx</code> and save to test HMR</p>
-      </div>
-      <p className='read-the-docs'>
-        Click on the Vite and React logos to learn more
-      </p>
-      
     </>
   );
 }
