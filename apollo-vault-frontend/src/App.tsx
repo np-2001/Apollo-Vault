@@ -3,7 +3,10 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import detectEthereumProvider from '@metamask/detect-provider'
 import NavBar from './Navbar'
-import './App.css'
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import RecordDisplay from './RecordDisplay'
+import Homepage from './Home'
 let injectedProvider = false
 
 if (typeof window.ethereum !== 'undefined') {
@@ -62,13 +65,13 @@ function App() {
 
   return (
     <>
-      <div className='App'>
-        <NavBar/>
-        <h1 id='title'>Welcome to the Apollo Vault</h1>
-        <button id="Start" type="button">Click here to start</button>
-
-
-        
+      <div className='Routes'>
+        <BrowserRouter>
+          <Routes>
+            <Route index element={<Homepage />} />
+            <Route path='/Display' element={<RecordDisplay/>}/>
+          </Routes>
+        </BrowserRouter>
 
       </div>
     {/*
