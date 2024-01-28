@@ -15,6 +15,7 @@ export default function Health() {
     });
     const location = useLocation();
     const state = location.state
+    const name = window.sessionStorage.getItem("name")
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({
@@ -26,7 +27,7 @@ export default function Health() {
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
         console.log(formData);
-        const path = "./"+state.name
+        const path = "/"+name
         const dataRef = ref(database, path);
         
         const formDataDict = {

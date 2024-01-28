@@ -10,7 +10,6 @@ let injectedProvider = false
 const contractAddress = "0xb8C825e2D81583ddA938Fca7816Ab8F88e7c24c2";
 
 function Homepage() {
-  window.sessionStorage.setItem("name", "Tim")
 
   const [count, setCount] = useState(0)
   const [hasProvider, setHasProvider] = useState<boolean | null>(null)

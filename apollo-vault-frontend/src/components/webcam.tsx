@@ -29,6 +29,7 @@ const WebcamCapture: React.FC = () => {
                         setShowPrompt(true);
                     } else {
                         navigate('/HomeMainDisplay', {state: {name: res.data}});
+                        window.sessionStorage.setItem("name", JSON.stringify(res.data))
                     }
                     window.sessionStorage.setItem("name", JSON.stringify(res.data))
                     navigate('/HomeMainDisplay', {state: {name: res.data}});
