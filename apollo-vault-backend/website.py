@@ -9,7 +9,7 @@ import os
 import shutil
 import time
 
-app = Flask(name)
+app = Flask(__name__)
 CORS(app)
 @app.route('/', methods=['POST', 'GET'])
 def home():
@@ -47,5 +47,5 @@ def home():
 
     return resp
 
-if name == 'main':
+if __name__ == '__main__':
     app.run(debug=True)
