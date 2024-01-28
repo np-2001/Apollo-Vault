@@ -12,6 +12,9 @@ Docker: Apollo-Vault is containerized for easy deployment. Download and install 
 
 # Getting Started
 Clone this repository: git clone https://github.com/your-username/apollo-vault.git
+
 Navigate to the project directory: cd apollo-vault
-Build the Docker image: docker-compose up
-Run the Docker container: docker run -p 5000:5000 apollo-vault
+
+Build the Docker container: docker-compose up
+
+CHoose the Docker container: 3000:3000 
