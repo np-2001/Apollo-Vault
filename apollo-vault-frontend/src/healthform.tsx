@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { ChangeEvent, FormEvent } from 'react';
 import NavBar from './Home_Main_Nav';
 import "./healthform.css"
@@ -13,6 +13,8 @@ export default function Health() {
         insurance: "",
         symptoms: "",
     });
+    const location = useLocation();
+    const state = location.state
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({
@@ -24,7 +26,7 @@ export default function Health() {
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
         console.log(formData);
-        const path = 'apollo_data/'
+        const path = "./"+state.name
         const dataRef = ref(database, path);
         
         const formDataDict = {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { ChangeEvent, FormEvent } from 'react';
 import NavBar from './Home_Main_Nav';
 import "./healthform.css"
@@ -27,7 +27,7 @@ export default function NewUser() {
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
         console.log(formData);
-        const path = '/about/hash'
+        const path = '/about/'+formData.name
         const dataRef = ref(database, path);
         
         const formDataDict = {
