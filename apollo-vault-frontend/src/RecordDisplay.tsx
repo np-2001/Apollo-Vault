@@ -14,9 +14,18 @@ function RecordDisplay() {
             <NavBar/>
             <div id='data'>
                 <h1 id='record-name'>{data.name}'s medical records</h1>
-                <h3 id='dob'>Date of Birth: {data.dob}</h3>
-                <h3 id='insurance'>Insurance: {data.insurance}</h3>
-                <h3 id='symptoms'>Symptoms: {data.symptoms}</h3>
+                <div id='dob-container'>
+                    <h3 id='dob'>Date of Birth: </h3>
+                    <h3>{data.dob}</h3>
+                </div>
+                <div id='insurance-container'>
+                    <h3 id='insurance'>Insurance:</h3>
+                    <h3>{data.insurance}</h3>
+                </div>
+                <div id='insurance-container'>
+                    <h3 id='symptoms'>Symptoms: </h3>
+                    <h3>{data.symptoms}</h3>
+                </div>
             </div>
             {/* <h3 id='smoking'>Smoking: </h3>
             <h3 id='alcohol'>Alcohol: </h3>
