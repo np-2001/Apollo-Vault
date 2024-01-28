@@ -30,7 +30,8 @@ const WebcamCapture: React.FC = () => {
                     } else {
                         navigate('/HomeMainDisplay', {state: {name: res.data}});
                     }
-                    
+                    window.sessionStorage.setItem("name", JSON.stringify(res.data))
+                    navigate('/HomeMainDisplay', {state: {name: res.data}});
                 })
                 .catch((error: any) => {
                     console.error('Error:', error);
@@ -65,13 +66,14 @@ const WebcamCapture: React.FC = () => {
             <button onClick={capture}>Click me to Start</button>
             <h2>{name}</h2>
             {showPrompt && (
-
-                <div>
+                <>
+                <div id='camera-container'>
                     <label htmlFor="nameInput">Enter your name:</label>
                     <input type="text" id="nameInput" value={new_user} onChange={handleInputChange} />
                     {/* Button to click after entering new_user */}
-                    <button onClick={handleButtonClick}>Submit</button>
                 </div>
+                <button onClick={handleButtonClick}>Submit</button>
+                </>
             )}
         </div>
     );

@@ -9,7 +9,7 @@ import { ref, onValue, push } from 'firebase/database';
 export default function Health() {
     const [formData, setFormData] = useState({
         name: "",
-        dateOfBirth: "",
+        dob: "",
         insurance: "",
         symptoms: "",
     });
@@ -31,7 +31,7 @@ export default function Health() {
         
         const formDataDict = {
             name: formData.name,
-            dob: formData.dateOfBirth,
+            dob: formData.dob,
             insuranceDetails: formData.insurance,
             reportedSymptoms: formData.symptoms,
             // add more fields or transformations as needed
@@ -72,7 +72,7 @@ export default function Health() {
                         type="date"
                         id="dateOfBirth"
                         name="dateOfBirth"
-                        value={formData.dateOfBirth}
+                        value={formData.dob}
                         onChange={handleChange}
                     />
                 </div>

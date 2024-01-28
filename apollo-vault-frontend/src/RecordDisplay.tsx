@@ -3,12 +3,9 @@ import {useState, useEffect} from 'react'
 import './RecordDisplay.css'
 import { database } from './firebase';
 import { ref, onValue, push, get, DataSnapshot,  } from 'firebase/database';
+import { useLocation } from 'react-router-dom'
 
 
-
-
-const hash = "apollo_data/"
-const retrieve = "-NpD5Mdya2qQAvc1WIbS"
 
 type DataObject = {
     name: string;
@@ -19,8 +16,12 @@ type DataObject = {
 
 function RecordDisplay() {
     const [data, setData] = useState<DataObject[]>([])
+    const location = useLocation()
+    const state = location.state
+    const name = window.sessionStorage.getItem("name")
+    console.log(name)
     useEffect(() => {
-
+        const hash = '/'+name
         const dataRef = ref(database, hash)
 
         get(dataRef).then((snapshot: DataSnapshot) => {
