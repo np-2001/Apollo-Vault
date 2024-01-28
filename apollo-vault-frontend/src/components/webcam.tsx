@@ -31,8 +31,6 @@ const WebcamCapture: React.FC = () => {
                         navigate('/HomeMainDisplay', {state: {name: res.data}});
                         window.sessionStorage.setItem("name", JSON.stringify(res.data))
                     }
-                    window.sessionStorage.setItem("name", JSON.stringify(res.data))
-                    navigate('/HomeMainDisplay', {state: {name: res.data}});
                 })
                 .catch((error: any) => {
                     console.error('Error:', error);
@@ -55,7 +53,7 @@ const WebcamCapture: React.FC = () => {
     };
 
     return (
-        <div>
+        <div id='camera-container'>
             <Webcam
                 audio={false}
                 height={300}
@@ -64,11 +62,11 @@ const WebcamCapture: React.FC = () => {
                 width={350}
                 videoConstraints={videoConstraints}
             />
-            <button onClick={capture}>Click me to Start</button>
+            
             <h2>{name}</h2>
             {showPrompt && (
                 <>
-                <div id='camera-container'>
+                <div>
                     <label htmlFor="nameInput">Enter your name:</label>
                     <input type="text" id="nameInput" value={new_user} onChange={handleInputChange} />
                     {/* Button to click after entering new_user */}
@@ -76,7 +74,9 @@ const WebcamCapture: React.FC = () => {
                 <button onClick={handleButtonClick}>Submit</button>
                 </>
             )}
+            <button onClick={capture}>Click me to Start</button>
         </div>
+        
     );
 };
 
