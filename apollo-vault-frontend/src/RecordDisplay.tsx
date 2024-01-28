@@ -1,4 +1,4 @@
-import NavBar from './Navbar'
+import NavBar from './Home_Main_Nav'
 import {useState, useEffect} from 'react'
 import './RecordDisplay.css'
 import { database } from './firebase';
@@ -25,6 +25,7 @@ function RecordDisplay() {
 
         get(dataRef).then((snapshot: DataSnapshot) => {
             let temp: DataObject[] = []
+            
             if (snapshot.exists()) {
                 snapshot.forEach((child) => {
                     const val = child.val()

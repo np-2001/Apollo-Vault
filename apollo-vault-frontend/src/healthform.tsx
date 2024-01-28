@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { ChangeEvent, FormEvent } from 'react';
-import NavBar from "./Navbar";
+import NavBar from './Home_Main_Nav';
 import "./healthform.css"
 import { database } from './firebase';
 import { ref, onValue, push } from 'firebase/database';

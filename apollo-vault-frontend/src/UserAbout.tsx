@@ -1,4 +1,4 @@
-import NavBar from './Navbar'
+import NavBar from './Home_Main_Nav'
 import {useState} from 'react'
 import './RecordDisplay.css'
 
@@ -13,7 +13,7 @@ function AboutPage() {
         <>
         <NavBar/>
             <div id='data'>
-                <h1 id='record-name'>{data.name}'s medical records</h1>
+                <h1 id='record-name'>{data.name}'s personal info</h1>
                 <div id='dob-container'>
                     <h3 id='dob'>Date of Birth: </h3>
                     <h3>{data.dob}</h3>
