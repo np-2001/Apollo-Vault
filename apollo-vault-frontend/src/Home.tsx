@@ -1,8 +1,7 @@
 import NavBar from './Navbar'
 import './Home.css'
 import { useState, useEffect } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import WebcamCapture from './components/webcam';
 import detectEthereumProvider from '@metamask/detect-provider'
 import ApolloVaultABI from './abis/apollo-vault.json';
 import { ethers } from 'ethers';
@@ -37,7 +36,7 @@ function Homepage() {
       if (address == facialRecognitionHash) {
         return true;
       }
-      
+
     } catch (error) {
       // Handle errors
       console.error('Error getting user address:', error);
@@ -88,6 +87,7 @@ function Homepage() {
         <div id='App'>
             <NavBar/>
             <h1 id='title'>Welcome to the Apollo Vault</h1>
+            <WebcamCapture />
             <button id="Start" type="button">Click here to start</button>
 
             { hasProvider &&                               
