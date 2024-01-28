@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useRef } from 'react';
 import axios from 'axios';
 import Webcam, { WebcamProps } from 'react-webcam';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const WebcamCapture: React.FC = () => {
     const navigate = useNavigate();
@@ -26,7 +26,7 @@ const WebcamCapture: React.FC = () => {
                     if (res.data === 'Unknown') {
                         setShowPrompt(true);
                     }
-                    navigate('/HomeMainDisplay');
+                    navigate('/HomeMainDisplay', {state: {name: res.data}});
                 })
                 .catch((error: any) => {
                     console.error('Error:', error);
