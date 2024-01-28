@@ -4,6 +4,8 @@ WORKDIR /apollo-vault-frontend
 
 COPY package.json .
 
+RUN npm install axios
+
 RUN npm install 
 
 RUN npm install vite
