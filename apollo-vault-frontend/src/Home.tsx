@@ -4,12 +4,15 @@ import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import detectEthereumProvider from '@metamask/detect-provider'
-import ApolloVault from './abis/apollo-vault.json'
+import ApolloVaultABI from './abis/apollo-vault.json';
 import { ethers } from 'ethers';
 let injectedProvider = false
 
-const contractAddress = "0xb8C825e2D81583ddA938Fca7816Ab8F88e7c24c2"
-
+const contractAddress = "0xb8C825e2D81583ddA938Fca7816Ab8F88e7c24c2";
+const provider = new ethers.providers.Web3Provider(window.ethereum)
+await provider.send('eth_requestAccounts', [])
+const signer = await provider.getSigner()
+const apolloVaultContract = new ethers.Contract(contractAddress, ApolloVaultABI, signer);
 
 
 function Homepage() {
@@ -18,6 +21,38 @@ function Homepage() {
   const [hasProvider, setHasProvider] = useState<boolean | null>(null)
   const initialState = { accounts: [] }               /* New */
   const [wallet, setWallet] = useState(initialState)  /* New */
+  const [facialRecognitionHash, setFacialRecognitionHash] = useState('');
+
+  const handleRegisterUser = async () => {
+    try {
+      const signer = await window.ethereum.request({ method: 'eth_requestAccounts' });
+      const contractWithSigner = apolloVaultContract.connect(signer[0]);
+
+      // Call the registerUser function
+      const transaction = await contractWithSigner.registerUser(facialRecognitionHash);
+      await transaction.wait();
+
+      return true;
+      // Handle success or provide user feedback
+      console.log('User registered successfully!');
+    } catch (error) {
+      // Handle errors
+      console.error('Error registering user:');
+    }
+  };  
+
+  const handleGetUserAddress = async () => {
+    try {
+      // Call the getUserAddress function
+      const address = await apolloVaultContract.getUserAddress(facialRecognitionHash);
+
+      // Update the state with the retrieved user address
+      return address;
+    } catch (error) {
+      // Handle errors
+      console.error('Error getting user address:');
+    }
+  };
 
   useEffect(() => {
     const refreshAccounts = (accounts: any) => {                /* New */
