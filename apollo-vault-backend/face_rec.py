@@ -7,7 +7,7 @@ import base64
 
 class FaceRec:
 
-    def init(self, known_person, unkown_images, known_name=None):
+    def __init__(self, known_person, unkown_images, known_name=None):
         self.known_person = known_person
         self.unkown_images = unkown_images
         self.known_name = known_name
