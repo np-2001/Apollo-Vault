@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { ChangeEvent, FormEvent } from 'react';
+import NavBar from "./Navbar";
+import "./healthform.css"
 
 
 export default function Health() {
@@ -26,11 +28,12 @@ export default function Health() {
     };
 
     return (
-        <div> {/* Wrapper div */}
+        <div id="wrapper"> {/* Wrapper div */}
+            <NavBar/>
             <h1 id="title">Health Record Form</h1>
             <form id="survey-form" onSubmit={handleSubmit}>
                 <div className="form-control">
-                    <label htmlFor="name">Name:</label>
+                    <label htmlFor="name">Name: </label>
                     <input
                         type="text"
                         id="name"
@@ -41,7 +44,7 @@ export default function Health() {
                 </div>
 
                 <div className="form-control">
-                    <label htmlFor="dateOfBirth">Date of Birth:</label>
+                    <label htmlFor="dateOfBirth">Date of Birth: </label>
                     <input
                         type="date"
                         id="dateOfBirth"
@@ -52,7 +55,7 @@ export default function Health() {
                 </div>
 
                 <div className="form-control">
-                    <label htmlFor="insurance">Insurance:</label>
+                    <label htmlFor="insurance">Insurance: </label>
                     <input
                         type="text"
                         id="insurance"
@@ -63,7 +66,7 @@ export default function Health() {
                 </div>
 
                 <div className="form-control">
-                    <label htmlFor="symptoms">Symptoms:</label>
+                    <label htmlFor="symptoms">Symptoms: </label>
                     <textarea
                         id="symptoms"
                         name="symptoms"
