@@ -5,15 +5,10 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import detectEthereumProvider from '@metamask/detect-provider'
 import ApolloVaultABI from './abis/apollo-vault.json';
-//import { ethers } from 'ethers';
+import { ethers } from 'ethers';
 let injectedProvider = false
 
 const contractAddress = "0xb8C825e2D81583ddA938Fca7816Ab8F88e7c24c2";
-//const provider = new ethers.providers.Web3Provider(window.ethereum)
-//await provider.send('eth_requestAccounts', [])
-//const signer = await provider.getSigner()
-//const apolloVaultContract = new ethers.Contract(contractAddress, ApolloVaultABI, signer);
-
 
 function Homepage() {
 
@@ -23,34 +18,29 @@ function Homepage() {
   const [wallet, setWallet] = useState(initialState)  /* New */
   const [facialRecognitionHash, setFacialRecognitionHash] = useState('');
 
-  const handleRegisterUser = async () => {
-    try {
-      const signer = await window.ethereum.request({ method: 'eth_requestAccounts' });
-      //const contractWithSigner = apolloVaultContract.connect(signer[0]);
+  const [error, setError] = useState(false)                /* New */
+  const [errorMessage, setErrorMessage] = useState("")
 
-      // Call the registerUser function
-      //const transaction = await contractWithSigner.registerUser(facialRecognitionHash);
-      //await transaction.wait();
-
-      return true;
-      // Handle success or provide user feedback
-      console.log('User registered successfully!');
-    } catch (error) {
-      // Handle errors
-      console.error('Error registering user:');
-    }
-  };  
-
-  const handleGetUserAddress = async () => {
+  const handleRegisterAndFetchUser = async () => {
+    
     try {
       // Call the getUserAddress function
-      //const address = await apolloVaultContract.getUserAddress(facialRecognitionHash);
+      const provider = new ethers.BrowserProvider(window.ethereum);
+      const signer = await provider.getSigner()
+      const apolloVaultContract = new ethers.Contract(contractAddress, ApolloVaultABI, signer);
 
-      // Update the state with the retrieved user address
-      //return address;
+      const registerTransaction = await apolloVaultContract.registerUser(facialRecognitionHash);
+      await registerTransaction.wait();
+
+      const address = await apolloVaultContract.getUserAddress(facialRecognitionHash);
+
+      if (address == facialRecognitionHash) {
+        return true;
+      }
+      
     } catch (error) {
       // Handle errors
-      console.error('Error getting user address:');
+      console.error('Error getting user address:', error);
     }
   };
 
